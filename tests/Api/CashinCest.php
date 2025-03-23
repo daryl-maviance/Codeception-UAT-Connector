@@ -142,27 +142,42 @@ final class CashinCest
 
 
 
-    /**
-     * @skip
-     */
+   
     public function Test(ApiTester $I): void
     {
-        $I->wantTo('');
-        $I->send('/');
+        $uuid = 'ad023546-c1fd-4f1e-ab08-2c5f823bfc20';
+        $I->wantTo('Get the status of a payment by payment reference id');
+        $I->send('/payment/'.$uuid);      
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
-        $I->seeResponseMatchesJsonType(
-            [
-               
-            ]
-        );
         $I->seeResponseContainsJson(
             [
-               
+               'status' => 'INPROGRESS'
             ]
         );
     }
 
+    /**
+     * @skip
+     */
+    public function BalanceTest(ApiTester $I): void
+    {
+        $I->wantTo('check the balance of the service');
+        $I->send('/balance');
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesJsonType(
+            [
+                'balance' => 'integer',
+                
+            ]
+        );
+        $I->seeResponseContainsJson(
+            [
+               'balance' => 0
+            ]
+        );
+    }
     /**
      * @skip
      */
