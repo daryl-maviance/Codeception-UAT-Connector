@@ -7,7 +7,7 @@ namespace Tests\Api;
 
 use Tests\Support\ApiTester;
 
-final class CashinCest
+final class CashoutCest
 {
     public function _before(ApiTester $I): void
     {
@@ -100,7 +100,7 @@ final class CashinCest
 
     public function TestCashinPay(ApiTester $I): void
     {
-        $I->wantTo('Make a cashin payment');
+        $I->wantTo('Make a cashout payment');
         $payload =[
             "cdata"=> "string",
           
@@ -124,7 +124,7 @@ final class CashinCest
               "lat"=> 85,
               "lng"=> 180
             ],
-            "service" => "MOMO_CASHIN",
+            "service" => "MOMO_CASHOUT",
             "callbackUrl"=> "https://www.smxobilpay.example.com",
             "destination"=> "079253755",
             "ptn"=> "BG",
