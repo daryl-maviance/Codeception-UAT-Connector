@@ -3,7 +3,7 @@
 # Perform tests in a browser by either emulating one using PhpBrowser, or in a real browser using WebDriver.
 # If you need both WebDriver and PhpBrowser tests, create a separate suite for each.
 
-actor: AcceptanceTester
+actor: ApiTester
 modules:
     enabled:
         - PhpBrowser:
@@ -21,7 +21,7 @@ modules:
             password: 'secret' 
             populate: true
             cleanup: true
-# Add Codeception\Step\Retry trait to AcceptanceTester to enable retries
+# Add Codeception\Step\Retry trait to ApiTester to enable retries
 step_decorators:
     - Codeception\Step\ConditionalAssertion
     - Codeception\Step\TryTo
