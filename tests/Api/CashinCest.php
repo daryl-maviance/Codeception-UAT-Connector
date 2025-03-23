@@ -77,9 +77,27 @@ final class CashinCest
     }
 
 
-    /**
-     * @skip
-     */
+
+    public function Testlookup (ApiTester $I): void
+    {
+        $I->wantTo('search  for  customer name');
+        $cident = 'ok';
+        $I->sendGet('/lookup?cident='.$cident);
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesJsonType(
+            [
+               'found' => 'boolean',
+               'entry' =>[
+                    'cident' => 'string',
+                    'cname'=>'string',
+               ]
+            ]
+        );
+    }
+
+    
+
     public function TestCashinPay(ApiTester $I): void
     {
         $I->wantTo('Make a cashin payment');
@@ -108,11 +126,29 @@ final class CashinCest
             ],
             "service" => "MOMO_CASHIN",
             "callbackUrl"=> "https://www.smxobilpay.example.com",
-            "destination"=> "079255753",
+            "destination"=> "079255755",
             "ptn"=> "BG",
             "amount"=> 1000
         ];
-        $I->sendPost('/');
+        $I->sendPost('/cashin/pay',);
+        $I->seeResponseCodeIs(201);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+               'status' => 'QUEUED'
+            ]
+        );
+    }
+
+
+
+    /**
+     * @skip
+     */
+    public function Test(ApiTester $I): void
+    {
+        $I->wantTo('');
+        $I->send('/');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesJsonType(
@@ -126,26 +162,6 @@ final class CashinCest
             ]
         );
     }
-
-    public function Testlookup (ApiTester $I): void
-    {
-        $I->wantTo('search  for  customer name');
-        $cident = 'ok';
-        $I->sendGet('/lookup?cident='.$cident);
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesJsonType(
-            [
-               'found' => 'boolean',
-               'entry' =>[
-                    'cident' => 'string',
-                    'cname'=>'string',
-               ]
-            ]
-        );
-    }
-
-
 
     /**
      * @skip
