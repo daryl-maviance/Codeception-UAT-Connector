@@ -13,7 +13,7 @@ modules:
             part: Json
         - Asserts
         - Db
-    config:     
+    config:
         Db:
             dsn: 'mysql:host=mysql:3306;dbname=phalcondb'
             dump: 'tests/_data/digitech.sql'
