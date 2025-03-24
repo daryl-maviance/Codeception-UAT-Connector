@@ -2,24 +2,24 @@
 return[
     'x-api-version' => 'v1',
     'x-api-key' => 'TESTKEY',
-    
+
     'payload' =>[
-        "cdata"=> "string",
+        "cdata"=> "some data",
       
         "customer"=> [
           "phone"=> "+23699255753",
-          "email"=> "address@domain.com",
-          "firstname"=> "John",
-          "lastname"=> "Doe",
+          "email"=> "nfoye@domain.com",
+          "firstname"=> "Johnathan",
+          "lastname"=> "Daryl charisma",
           "dob"=> "2001-05-17",
-          "idDocumentNumber"=> "string",
-          "idDocumentType"=> "string",
+          "idDocumentNumber"=> "1234",
+          "idDocumentType"=> "doc",
           "idDocumentCountryIso"=> "CM",
-          "cdata"=> "string"
+          "cdata"=> "some string"
         ],
         
         "agent"=> [
-          "agentId"=> "string",
+          "agentId"=> "44ds5",
           "ccId"=> "dae566",
           "agentName"=> "Daryl",
           "ccName"=> "Daryl Sarl",
@@ -28,9 +28,9 @@ return[
         ],
         "service" => "MOMO_CASHOUT",
         "callbackUrl"=> "https://www.smxobilpay.example.com",
-        "destination"=> "079253755",
-        "ptn"=> "BG",
-        "amount"=> 1000
+        "destination"=> "079253799",
+        "ptn"=> "BIGBG",
+        "amount"=> 3000
     ],
 
     'expected_response' => [

@@ -8,8 +8,17 @@ return[
         ],
 
         'paymentStatusData'=>[
-            'valid_uuid' => '18744203-bb39-4481-be0c-61ec413f9e48',
-            'invalid_uuid' => '9b38acce-ab25-486d-877e-73f0c18ebfb6'
+            'valid' => [
+                'uuid' => '890d5d29-c23e-45ac-86d4-6a1d3280ca4e'
+            ],
+            'invalid' =>[
+                'uuid' => '9b38acce-ab25-486d-877e-73f0c18ebfb6'  ,
+                'response' =>[
+                    'code'=> 703100,
+                    'message'=>'Payment with specified uuid does not exist',
+                    'devMessage'=>'Payment with specified uuid does not exist'
+                ]
+            ]
         ],
 
         'healthResponse' => [

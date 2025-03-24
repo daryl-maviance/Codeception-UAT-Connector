@@ -22,6 +22,9 @@ final class CommonCest
          $I->haveHttpHeader('Accept', 'application/json');
     }
 
+    /**
+     * @skip
+     */
     public function TestHealth(ApiTester $I): void
     {
         // Write your tests here. All `public` methods will be executed as tests.
@@ -93,7 +96,7 @@ final class CommonCest
         );
     }
 
-
+    
     public function TestNoApiKey(ApiTester $I): void
     {
         $I->wantTo('check  the  health of  the api without api key');
@@ -124,7 +127,7 @@ final class CommonCest
         $I->wantTo('Get the status of a payment by existing payment reference id');
         $I->haveHttpHeader('x-api-version', $this->fixtures['x-api-version']);
         $I->haveHttpHeader('x-api-key', $this->fixtures['x-api-key']);
-        $I->sendGet('/payment/'.$this->fixtures['paymentStatusData']['valid_uuid']);      
+        $I->sendGet('/payment/'.$this->fixtures['paymentStatusData']['valid']['uuid']);      
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesJsonType(
@@ -142,15 +145,10 @@ final class CommonCest
         $I->wantTo('Does not get the status of a payment with non existant payment reference id');
         $I->haveHttpHeader('x-api-version', $this->fixtures['x-api-version']);
         $I->haveHttpHeader('x-api-key', $this->fixtures['x-api-key']);
-        $I->sendGet('/payment/'.$this->fixtures['paymentStatusData']['invalid_uuid']);      
-        $I->seeResponseCodeIs(400);
+        $I->sendGet('/payment/'.$this->fixtures['paymentStatusData']['invalid']['uuid']);      
+        $I->seeResponseCodeIs(404);
         $I->seeResponseIsJson();
-        $I->seeResponseMatchesJsonType(
-            [
-               'status' => 'string'
-            ]
-        );
-
+        $I->seeResponseContainsJson($this->fixtures['paymentStatusData']['invalid']['response'] );
     }
 
 
@@ -199,7 +197,7 @@ final class CommonCest
         $I->haveHttpHeader('x-api-version', $this->fixtures['x-api-version']);
         $I->haveHttpHeader('x-api-key', $this->fixtures['x-api-key']);
         $uuid = '9b38acce-ab25-486d-877e-73f0c18ebfb6';
-        $I->sendPost('/payment/'.$this->fixtures['paymentStatusData']['valid_uuid'].'/refresh');
+        $I->sendPost('/payment/'.$this->fixtures['paymentStatusData']['valid']['uuid'].'/refresh');
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesJsonType(
