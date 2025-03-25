@@ -3,6 +3,10 @@
 ## Features
 This project is a test framework for the Digitech connector, designed for REH trainees as part of a mentorship program. It uses Codeception for acceptance testing and Docker for managing test environments.
 
+
+# Screeenshot  of running tests
+![Screenshot  of running tests](screenshots/running_tests.png)
+
 # How to start the project locally
 1. Clone the repository:
    ```bash
@@ -104,5 +108,3 @@ APPLICATION_ENV=testing
 MYSQL_HOST=mysql
 ```
 
-# Screeenshot  of running tests
-![Screenshot  of running tests](screenshots/running_tests.png)
