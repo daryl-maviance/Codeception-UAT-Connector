@@ -10,7 +10,7 @@ This project is a test framework for the Digitech connector, designed for REH tr
 # How to start the project locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/NoellaMarie501/Codeception-UAT-Connector.git
+   git clone https://github.com/daryl-maviance/Codeception-UAT-Connector
    cd Codeception-UAT-Connector
    ```
 2. Ensure that Docker and Docker Compose are installed on your machine.
