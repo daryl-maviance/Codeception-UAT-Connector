@@ -22,9 +22,7 @@ final class CommonCest
          $I->haveHttpHeader('Accept', 'application/json');
     }
 
-    /**
-     * @skip
-     */
+   
     public function TestHealth(ApiTester $I): void
     {
         // Write your tests here. All `public` methods will be executed as tests.
