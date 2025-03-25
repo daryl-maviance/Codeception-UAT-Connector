@@ -104,3 +104,5 @@ APPLICATION_ENV=testing
 MYSQL_HOST=mysql
 ```
 
+# Screeenshot  of running tests
+![Screenshot  of running tests](screenshots/running_tests.png)
