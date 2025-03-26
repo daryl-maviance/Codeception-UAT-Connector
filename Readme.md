@@ -1,110 +1,113 @@
 # Connector Test Framework for REH Trainee (Mentorship)
 
 ## Features
-This project is a test framework for the Digitech connector, designed for REH trainees as part of a mentorship program. It uses Codeception for acceptance testing and Docker for managing test environments.
+This project is a test framework for the Digitech connector, designed for REH trainees as part of a mentorship program. It uses Codeception for API testing and Docker for managing test environments.
 
+## Screenshot of Running Tests
+![Screenshot of running tests](screenshots/running_tests.png)
 
-# Screenshot  of running tests
-![Screenshot  of running tests](screenshots/running_tests.png)
-
-# How to start the project locally
-1. Clone the repository:
+## How to Start the Project Locally
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/daryl-maviance/Codeception-UAT-Connector
    cd Codeception-UAT-Connector
    ```
-2. Ensure that Docker and Docker Compose are installed on your machine.
-3. Install and configure aws
-```bash
+
+2. **Ensure Docker and Docker Compose are installed** on your machine.
+
+3. **Install and configure AWS CLI**:
+   ```bash
    sudo apt update && sudo apt install unzip -y
    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
    unzip awscliv2.zip
    sudo ./aws/install
    complete -C '/usr/local/bin/aws_completer' aws
-   aws configure  //for add your aws key, aws secret, region and format
-```
-
-4. Authenticate with your aws credentials:
-   ```bash
-    make auth2
+   aws configure  # Add your AWS key, secret, region, and format
    ```
 
-5. Download the image of digitech connector
+4. **Authenticate with AWS credentials**:
+   ```bash
+   make auth2
+   ```
+
+5. **Pull the Digitech connector image**:
    ```bash
    make digitech-pull
    ```
 
-6. Build the Docker containers:
+6. **Build the Docker containers**:
    ```bash
    make build
    ```
 
-7. Start the services:
+7. **Start the services**:
    ```bash
    make up
    ```
 
+8. **Run the tests**:
+   ```bash
+   make execute-test
+   ```
+
 ## Framework
 The project uses the following frameworks:
-- **Codeception**: A PHP testing framework for acceptance, functional, and unit testing.
-## Development
-### Development Commands
-- **build**: Build the Docker containers.
+- **Codeception**: A PHP testing framework for API testing.
+- **Docker**: For containerized environments.
+
+## Development Commands
+- **Build**: Build the Docker containers.
   ```bash
   make build
   ```
-- **up**: Start the services in the background.
+- **Start Services**: Start the services in the background.
   ```bash
   make up
   ```
-- **stop**: Stop the services.
+- **Stop Services**: Stop the services.
   ```bash
   make stop
   ```
-- **reset**: Reset the services (stop, clean, rebuild, and start).
+- **Reset Services**: Stop, clean, rebuild, and start the services.
   ```bash
   make reset
   ```
-- **clean**: Clean up Docker containers and orphans.
+- **Clean**: Remove Docker containers and orphans.
   ```bash
   make clean
   ```
-- **app-logs**: Show application logs.
+- **Application Logs**: View application logs.
   ```bash
   make app-logs
   ```
-- **test-logs**: Show test logs.
+- **Test Logs**: View test logs.
   ```bash
   make test-logs
   ```
-- **app-root**: Open a bash shell as root in the application container.
+- **Application Shell**: Open a bash shell as root in the application container.
   ```bash
   make app-root
   ```
-- **test-root**: Open a bash shell as root in the test container.
+- **Test Shell**: Open a bash shell as root in the test container.
   ```bash
   make test-root
   ```
-- **execute-test**: Run tests in the test container.
+- **Execute Tests**: Run tests in the test container.
   ```bash
   make execute-test
   ```
 
-## Run tests
+## Configuration Parameters
+Configuration parameters are defined in the `variables.env` file. Ensure the necessary environment variables are properly configured before starting the services.
 
-
-To run the tests:
-```bash
-   make execute-test
-```
-
-# Configuration Parameters
-Configuration parameters are defined in the `variables.env` file. Make sure to properly configure the necessary environment variables before starting the services.
-
-For example content of the `variables.env` file:
+Example content of the `variables.env` file:
 ```env
-DIGITECH=<digitech_connector-image>
+DIGITECH=<digitech_connector_image>
 APPLICATION_ENV=testing
 MYSQL_HOST=mysql
 ```
+
+## Notes
+- Ensure all dependencies are installed before running the project.
+- Use the provided `Makefile` commands for easier management of the project lifecycle.
 
